@@ -84,8 +84,7 @@ export default function AboutMePage() {
           <h2 className="text-2xl font-semibold mb-6">What I'm Listening To</h2>
           <div className="bg-card rounded-lg border border-border p-6">
             <iframe 
-              style={{borderRadius: "12px"}}
-              src="https://open.spotify.com/embed/playlist/1LMckgC9399iAupilNNJdN?utm_source=generator" 
+              src="https://open.spotify.com/embed/playlist/4ffCIwX0RzGymYfC8hkDPw?utm_source=generator" 
               width="100%" 
               height="352" 
               frameBorder="0" 
