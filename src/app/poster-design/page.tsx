@@ -200,21 +200,21 @@ export default function PosterDesignPage() {
               </div>
             </div>
 
-            {/* MH Day Poster */}
+            {/* Diwali Celebration Poster (Replaced MH Day) */}
             <div className="group relative rounded-lg overflow-hidden border border-border bg-card hover:shadow-lg transition-all">
               <div className="relative h-auto w-full bg-muted flex justify-center">
                 <img 
-                  src="/images/mh-day-poster.jpg" 
-                  alt="MH Day celebration poster" 
+                  src="/images/diwali-celebration.jpg" 
+                  alt="Diwali celebration poster" 
                   className="w-full object-contain"
                 />
               </div>
               <div className="p-4">
-                <h3 className="text-lg font-medium mb-2">MH Day Celebration</h3>
-                <p className="text-sm text-muted-foreground mb-3">Playful event poster with comic-style elements</p>
+                <h3 className="text-lg font-medium mb-2">Diwali Celebration</h3>
+                <p className="text-sm text-muted-foreground mb-3">Elegant festival poster with golden diya illustration and inspirational message</p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs bg-secondary px-2 py-1 rounded">Event</span>
-                  <span className="text-xs bg-secondary px-2 py-1 rounded">Illustration</span>
+                  <span className="text-xs bg-secondary px-2 py-1 rounded">Festival</span>
+                  <span className="text-xs bg-secondary px-2 py-1 rounded">Cultural</span>
                 </div>
               </div>
             </div>

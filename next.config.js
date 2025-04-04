@@ -1,27 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  distDir: 'out',
-  eslint: {
-    // we use biome for linting
-    ignoreDuringBuilds: true,
-  },
+  reactStrictMode: true,
   images: {
-    unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "ext.same-assets.com",
-      },
-      {
-        protocol: "https",
-        hostname: "framerusercontent.com",
-      },
-    ],
+    domains: [],
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-};
+  // Remove exportPathMap as it's not needed for development
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
