@@ -445,44 +445,69 @@ export default function LoomyPage() {
             using a vibrant yellow as our primary color to convey optimism and connection.
           </p>
           
+          {/* Brand Identity */}
+          <div className="bg-card p-8 rounded-lg border border-border mb-12">
+            <h3 className="text-xl font-medium mb-6">Brand Identity</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <p className="text-lg mb-6">
+                  The LooMY brand represents privacy with personality. Our logo and visual elements 
+                  combine friendly, approachable shapes with a vibrant color palette to create a 
+                  sense of trust and openness while maintaining the playful spirit of conversation.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <p className="font-medium">Friendly and approachable</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <p className="font-medium">Privacy-focused</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <p className="font-medium">Vibrant and optimistic</p>
+                  </div>
+                </div>
+              </div>
+              <div className="relative h-64 w-full">
+                <Image
+                  src="/images/loomy-logo.jpg"
+                  alt="LooMY logo on bright yellow background"
+                  fill
+                  className="object-contain rounded-xl"
+                />
+              </div>
+            </div>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="bg-card p-8 rounded-lg border border-border">
               <h3 className="text-xl font-medium mb-6">Color Palette</h3>
               <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <div className="h-24 bg-[#AFAFAF] rounded-lg mb-2"></div>
-                  <p className="text-sm font-medium">#AFAFAF</p>
-                  <p className="text-xs text-muted-foreground">Gray</p>
-                </div>
-                <div>
-                  <div className="h-24 bg-[#FFFFFF] rounded-lg mb-2"></div>
-                  <p className="text-sm font-medium">#FFFFFF</p>
-                  <p className="text-xs text-muted-foreground">White</p>
-                </div>
-                <div>
-                  <div className="h-24 bg-[#E1E1E1] rounded-lg mb-2"></div>
-                  <p className="text-sm font-medium">#E1E1E1</p>
-                  <p className="text-xs text-muted-foreground">Light Gray</p>
-                </div>
-                <div>
-                  <div className="h-24 bg-[#4B4B4B] rounded-lg mb-2"></div>
-                  <p className="text-sm font-medium">#4B4B4B</p>
-                  <p className="text-xs text-muted-foreground">Dark Gray</p>
-                </div>
-                <div>
-                  <div className="h-24 bg-[#FFFBE1] rounded-lg mb-2"></div>
-                  <p className="text-sm font-medium">#FFFBE1</p>
-                  <p className="text-xs text-muted-foreground">Cream</p>
-                </div>
-                <div>
-                  <div className="h-24 bg-[#F7F7F7] rounded-lg mb-2"></div>
-                  <p className="text-sm font-medium">#F7F7F7</p>
-                  <p className="text-xs text-muted-foreground">Off-White</p>
-                </div>
-                <div>
-                  <div className="h-24 bg-[#FAE943] rounded-lg mb-2"></div>
+                <div className="space-y-2">
+                  <div className="h-24 bg-[#FAE943] rounded-lg"></div>
                   <p className="text-sm font-medium">#FAE943</p>
                   <p className="text-xs text-muted-foreground">Primary Yellow</p>
+                  <p className="text-xs">Conveys optimism, energy, and approachability</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="h-24 bg-[#FFFBE1] rounded-lg"></div>
+                  <p className="text-sm font-medium">#FFFBE1</p>
+                  <p className="text-xs text-muted-foreground">Cream</p>
+                  <p className="text-xs">Creates warmth and softness in the interface</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="h-24 bg-[#4B4B4B] rounded-lg"></div>
+                  <p className="text-sm font-medium">#4B4B4B</p>
+                  <p className="text-xs text-muted-foreground">Dark Gray</p>
+                  <p className="text-xs">Provides contrast and readability</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="h-24 bg-[#FFFFFF] rounded-lg"></div>
+                  <p className="text-sm font-medium">#FFFFFF</p>
+                  <p className="text-xs text-muted-foreground">White</p>
+                  <p className="text-xs">Creates clean, open spaces in the interface</p>
                 </div>
               </div>
             </div>
@@ -493,22 +518,27 @@ export default function LoomyPage() {
                 <div className="border-b border-border pb-4">
                   <p className="text-sm text-muted-foreground mb-2">Plus Jakarta Sans / Bold / 28px</p>
                   <p className="text-3xl font-bold">Headline Bold</p>
+                  <p className="text-xs mt-2">Used for main headings and key messages</p>
                 </div>
                 <div className="border-b border-border pb-4">
                   <p className="text-sm text-muted-foreground mb-2">Plus Jakarta Sans / Semibold / 20px</p>
                   <p className="text-2xl font-semibold">Headline Semibold</p>
+                  <p className="text-xs mt-2">Used for section headings and important UI elements</p>
                 </div>
                 <div className="border-b border-border pb-4">
                   <p className="text-sm text-muted-foreground mb-2">Plus Jakarta Sans / Medium / 18px</p>
                   <p className="text-xl font-medium">Headline Medium</p>
+                  <p className="text-xs mt-2">Used for sub-headings and emphasized content</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-2">Plus Jakarta Sans / Regular / 16px</p>
                   <p className="text-base font-normal">Body Text</p>
+                  <p className="text-xs mt-2">Used for general content and UI elements</p>
                 </div>
               </div>
             </div>
           </div>
+          
         </div>
 
         {/* High-Fidelity Wireframes Section */}
@@ -736,19 +766,43 @@ export default function LoomyPage() {
           <div className="bg-green-900/10 p-8 rounded-lg border border-green-900/20">
             <h3 className="text-2xl font-medium mb-4">Future Opportunities</h3>
             <p className="text-lg mb-6">
-              As we move forward with LooMY, we're exploring several opportunities to enhance the platform:
+              As we continue to evolve LooMY, we're exploring several innovative opportunities to enhance the platform while maintaining our core privacy principles:
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-background p-6 rounded-lg border border-border">
-                <h4 className="font-medium mb-2">Voice & Audio Features</h4>
+                <h4 className="font-medium mb-2">AI-Powered Conversation Starters</h4>
                 <p className="text-muted-foreground">
-                  Implementing voice messaging and audio rooms while maintaining anonymity
+                  Implementing contextual AI that suggests conversation topics based on shared interests, helping users break the ice while preserving anonymity
                 </p>
               </div>
               <div className="bg-background p-6 rounded-lg border border-border">
-                <h4 className="font-medium mb-2">Community Building</h4>
+                <h4 className="font-medium mb-2">Ephemeral Communities</h4>
                 <p className="text-muted-foreground">
-                  Creating topic-based communities for deeper discussions while preserving privacy
+                  Creating time-limited group spaces around trending topics or events, allowing users to engage in collective discussions that automatically dissolve after a set period
+                </p>
+              </div>
+              <div className="bg-background p-6 rounded-lg border border-border">
+                <h4 className="font-medium mb-2">Mood-Based Matching</h4>
+                <p className="text-muted-foreground">
+                  Developing a system that connects users based on current emotional states and conversation preferences, creating more meaningful real-time connections
+                </p>
+              </div>
+              <div className="bg-background p-6 rounded-lg border border-border">
+                <h4 className="font-medium mb-2">Voice Modulation Technology</h4>
+                <p className="text-muted-foreground">
+                  Introducing privacy-preserving voice chat with customizable voice filters that maintain anonymity while enabling more personal communication
+                </p>
+              </div>
+              <div className="bg-background p-6 rounded-lg border border-border">
+                <h4 className="font-medium mb-2">Collaborative Creative Spaces</h4>
+                <p className="text-muted-foreground">
+                  Building shared canvas environments where matched users can draw, create music, or solve puzzles together, fostering connection through collaborative activities
+                </p>
+              </div>
+              <div className="bg-background p-6 rounded-lg border border-border">
+                <h4 className="font-medium mb-2">Decentralized Privacy Framework</h4>
+                <p className="text-muted-foreground">
+                  Exploring blockchain technology to create a truly decentralized messaging system where users have complete ownership of their conversation data
                 </p>
               </div>
             </div>

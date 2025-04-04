@@ -7,8 +7,11 @@ import { PageTransition } from "./page-transition"
 import { CustomCursor } from "@/components/custom-cursor";
 
 export const metadata: Metadata = {
-  title: "Design Portfolio",
-  description: "Designing delightful experiences, one pixel at a time.",
+  title: "Mohammed Hinan A K",
+  description: "Designer",
+  openGraph: {
+    images: ['/images/profile-photo.jpg'],
+  },
 }
 
 export default function RootLayout({

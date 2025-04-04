@@ -80,15 +80,15 @@ export function Sidebar() {
             isHovered ? "justify-between" : "justify-center"
           )}
           onClick={() => {
-            // Access the ThemeToggle's functionality through a custom method
-            // This assumes ThemeToggle has a click handler that toggles the theme
             const themeToggleElement = document.querySelector('[data-theme-toggle]');
             if (themeToggleElement) {
               (themeToggleElement as HTMLElement).click();
             }
           }}
         >
-          <ThemeToggle />
+          <span className="flex items-center justify-center w-5 h-5">
+            <ThemeToggle />
+          </span>
           {isHovered && <span className="text-sm">Toggle theme</span>}
         </div>
 
@@ -141,7 +141,7 @@ function NavItem({ href, icon, label, isHovered, external = false }: NavItemProp
       rel={external ? "noreferrer noopener" : undefined}
       className="group relative flex items-center w-full px-3 py-2 hover:bg-secondary rounded-md transition-colors duration-200"
     >
-      <span className="flex items-center justify-center">{icon}</span>
+      <span className="flex items-center justify-center w-5 h-5">{icon}</span>
       {isHovered && (
         <span className="ml-3 text-sm whitespace-nowrap opacity-100 transition-opacity duration-200">
           {label}

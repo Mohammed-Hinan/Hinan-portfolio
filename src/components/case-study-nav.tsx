@@ -16,7 +16,7 @@ export function CaseStudyNav() {
         "challenge",
         "research",
         "developing",
-        "wireframes",
+        isLoomyPage ? "wireframes" : "mid-fidelity",
         "design-system",
         "high-fidelity",
         isLoomyPage ? "avatar-story" : "final-solution",
@@ -56,7 +56,11 @@ export function CaseStudyNav() {
           <a href="#challenge" className={`transition-colors whitespace-nowrap px-2 ${activeSection === "challenge" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}>The Challenge</a>
           <a href="#research" className={`transition-colors whitespace-nowrap px-2 ${activeSection === "research" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}>Research</a>
           <a href="#developing" className={`transition-colors whitespace-nowrap px-2 ${activeSection === "developing" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}>Developing Solution</a>
-          <a href="#wireframes" className={`transition-colors whitespace-nowrap px-2 ${activeSection === "wireframes" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}>Wireframes</a>
+          {isLoomyPage ? (
+            <a href="#wireframes" className={`transition-colors whitespace-nowrap px-2 ${activeSection === "wireframes" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}>Wireframes</a>
+          ) : (
+            <a href="#mid-fidelity" className={`transition-colors whitespace-nowrap px-2 ${activeSection === "mid-fidelity" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}>Mid-Fidelity</a>
+          )}
           <a href="#design-system" className={`transition-colors whitespace-nowrap px-2 ${activeSection === "design-system" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}>Design System</a>
           <a href="#high-fidelity" className={`transition-colors whitespace-nowrap px-2 ${activeSection === "high-fidelity" ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"}`}>High-Fidelity</a>
           {isLoomyPage ? (

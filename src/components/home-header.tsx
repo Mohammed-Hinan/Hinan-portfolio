@@ -22,7 +22,7 @@ export function HomeHeader() {
       </h1>
 
       <p className="text-md text-muted-foreground mb-6">
-        When I&apos;m not designing, you&apos;ll probably find me watching movies, trying to cook something new(not a pro chef), editing videos, listening music.
+        When I&apos;m not designing, you&apos;ll probably find me watching movies, trying to cook something new(lol my mom don't wanna see this, im just a noob), listening music.
       </p>
 
       <div className="flex items-center gap-4">

@@ -70,10 +70,10 @@ export default function AboutMePage() {
           <div className="bg-card rounded-lg border border-border p-8">
             <div className="mb-4 text-amber-500">Sunday May 01, 2022 at 12.37 PM</div>
             <p className="mb-6 text-muted-foreground">
-              My adventure started during my first year college... My senior asked me "Do you know how to make posters! "
+            My adventure started during my first year of college. My senior asked me, "Do you know how to make posters?"
             </p>
             <p className="text-muted-foreground">
-            since then im trying to learn more and more about designing i have juggled through many niches like illustration, graphic design,3d design, i fall for ui/ux which on core try to solve problems creatively and intuitively I also had an opportunity to attend a Designconf. Conducted by fofkozhikode, i consider myself as the best descision to secure a seat for that, i had an opportunity to listen to many industry leading designers like Anil Reddy, Yasha Patki, Arun Antony and Jose Joseph which was a best thing to listen and interact with them and gain some insights from them, i constantly want to update myself and update my skills. I would love any opportunity to be a better designer
+            Since then, I've been trying to learn more and more about design. I have explored many niches like illustration, graphic design, and 3D design. I fell for UI/UX because, at its core, it tries to solve problems creatively and intuitively. I also had the opportunity to attend a design conference conducted by Fofkozhikode. I consider myself fortunate to have secured a seat at that event, where I listened to many industry-leading designers like Anil Reddy, Yasha Patki, Arun Antony, and Jose Joseph. It was an incredible experience to listen, interact with them, and gain valuable insights. I constantly strive to update my skills and would welcome any opportunity to become a better designer.
 
             </p>
           </div>
