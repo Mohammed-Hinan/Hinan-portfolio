@@ -1,0 +1,18 @@
+<svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_635_5454)">
+<rect width="35" height="40" rx="17.5" transform="matrix(1 0 0 -1 45 40)" fill="white"/>
+<rect width="29" height="33" rx="14.5" transform="matrix(1 0 0 -1 65.5 36.5)" fill="#3D3D3D"/>
+</g>
+<g clip-path="url(#clip1_635_5454)">
+<rect width="35" height="40" rx="17.5" transform="matrix(1 0 0 -1 0 40)" fill="white"/>
+<rect width="29" height="33" rx="14.5" transform="matrix(1 0 0 -1 20.5 36.5)" fill="#3D3D3D"/>
+</g>
+<defs>
+<clipPath id="clip0_635_5454">
+<rect width="35" height="40" rx="17.5" transform="matrix(1 0 0 -1 45 40)" fill="white"/>
+</clipPath>
+<clipPath id="clip1_635_5454">
+<rect width="35" height="40" rx="17.5" transform="matrix(1 0 0 -1 0 40)" fill="white"/>
+</clipPath>
+</defs>
+</svg>

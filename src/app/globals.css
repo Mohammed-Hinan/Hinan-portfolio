@@ -1,0 +1,104 @@
+/* === Tailwind CSS Directives === */
+/* Include these at the top of your global CSS file */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Remove the Google Fonts import that might be causing issues */
+/* @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap'); */
+
+@layer base {
+  :root {
+    /* Example Light Theme Variables */
+    --background: 0 0% 98%; /* hsl(0, 0%, 98%) */
+    --foreground: 0 0% 9%; /* hsl(0, 0%, 9%) */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 272 55% 50%; /* Example primary color */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 272 55% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 272 55% 50%;
+    --radius: 0.75rem; /* Example border radius */
+  }
+
+  .dark {
+    /* Example Dark Theme Variables */
+    --background: 0 0% 9%; /* hsl(0, 0%, 9%) */
+    --foreground: 0 0% 98%; /* hsl(0, 0%, 98%) */
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 90%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 90%;
+    --primary: 272 55% 50%; /* Example primary color */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 272 55% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 272 55% 50%;
+  }
+}
+
+@layer base {
+  /* Apply base border styles */
+  * {
+    @apply border-border;
+  }
+  /* Apply base background, text color, and font features */
+  body {
+    @apply bg-background text-foreground;
+    /* Example font feature settings */
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Include your @font-face rules here if needed */
+  /* @font-face { ... } */
+}
+
+
+/* === Custom Cursor Specific Styles === */
+
+/* CSS rule to hide the default system cursor */
+/* This class is added/removed by the React component */
+.custom-cursor-enabled,
+.custom-cursor-enabled * { /* Apply to all children as well */
+  cursor: none !important; /* Force hide default cursor */
+}
+
+/* Optimizations for the custom cursor elements */
+.custom-cursor, /* Target the inner dot class */
+.custom-cursor-ring { /* Target the outer ring class */
+  /* Hint to the browser that the transform property will change,
+     allowing potential performance optimizations. */
+  will-change: transform;
+
+  /* Prevent the custom cursor elements themselves from intercepting
+     mouse events (like clicks or hovers) meant for elements underneath. */
+  pointer-events: none;
+}
+
+/* Media query to restore the default cursor on smaller screens */
+/* Adjust the max-width to match your desired breakpoint (768px = Tailwind 'md') */
+@media (max-width: 768px) {
+  .custom-cursor-enabled,
+  .custom-cursor-enabled * {
+    cursor: auto !important; /* Restore the default cursor */
+  }
+}
