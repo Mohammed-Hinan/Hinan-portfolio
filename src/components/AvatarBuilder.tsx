@@ -12,7 +12,7 @@ export default function AvatarBuilder() {
   // Define available options (based on your image files)
   // Assuming the files are numbered 1.svg, 2.svg, etc.
   const colors = Array.from({ length: 18 }, (_, i) => i + 1)
-  const eyes = Array.from({ length: 13 }, (_, i) => String(i + 1).padStart(2, '0'))
+  const eyes = Array.from({ length: 24 }, (_, i) => String(i + 1).padStart(2, '0'))
   const mouths = Array.from({ length: 16 }, (_, i) => String(i + 1).padStart(2, '0'))
   
   // Navigation handlers

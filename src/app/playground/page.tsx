@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { PlaygroundCard } from "@/components/playground-card"
-import { Paintbrush, Code, Palette, type LucideIcon, Type, Box, Puzzle } from "lucide-react"
+import { Brain, Sticker } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 
 interface PlaygroundItem {
   title: string
@@ -15,57 +16,21 @@ interface PlaygroundItem {
 
 const playgroundItems: PlaygroundItem[] = [
   {
-    title: "Color Palette Generator",
-    description: "Generate beautiful color palettes for your next design project.",
+    title: "Memory Game",
+    description: "Test your memory with this fun card matching game featuring beautiful images.",
+    label: "Interactive Game",
+    icon: Brain,
+    href: "/playground/memory-game",
+    gradient: "from-purple-500 to-pink-500"
+  },
+  {
+    title: "Sticker Generator",
+    description: "Create custom stickers with borders, shadows, and text from your images.",
     label: "Design Tool",
-    icon: Palette,
-    href: "/playground/color-palette",
-    gradient: "from-blue-500 to-violet-500",
-    comingSoon: true
-  },
-  {
-    title: "Interactive Typography",
-    description: "Experiment with different typography and see the results in real-time.",
-    label: "Typography",
-    icon: Type,
-    href: "/playground/typography",
-    gradient: "from-amber-500 to-orange-500",
-    comingSoon: true
-  },
-  {
-    title: "CSS Animation Lab",
-    description: "Create and experiment with CSS animations and transitions.",
-    label: "Animation",
-    icon: Paintbrush,
-    href: "/playground/animations",
-    gradient: "from-emerald-500 to-cyan-500"
-  },
-  {
-    title: "UI Component Showcase",
-    description: "Explore a collection of beautifully designed UI components.",
-    label: "Components",
-    icon: Box,
-    href: "/playground/components",
-    gradient: "from-rose-500 to-pink-500",
-    comingSoon: true
-  },
-  {
-    title: "Interactive SVG Playground",
-    description: "Create and manipulate SVG graphics with interactive controls.",
-    label: "Graphics",
-    icon: Code,
-    href: "/playground/svg",
-    gradient: "from-indigo-500 to-purple-500",
-    comingSoon: true
-  },
-  {
-    title: "Layout Explorer",
-    description: "Experiment with different layout techniques and responsive designs.",
-    label: "Layouts",
-    icon: Puzzle,
-    href: "/playground/layouts",
-    gradient: "from-teal-500 to-green-500",
-    comingSoon: true
+    icon: Sticker,
+    href: "/playground/sticker-generator",
+    gradient: "from-green-500 to-teal-500",
+    comingSoon: true  // Added this property to make it "Coming Soon"
   }
 ]
 
@@ -81,7 +46,7 @@ export default function PlaygroundPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {playgroundItems.map((item) => (
             <PlaygroundCard
               key={item.title}
