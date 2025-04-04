@@ -74,10 +74,20 @@ export function Sidebar() {
       </nav>
 
       <div className="mt-auto flex flex-col items-center gap-4 mb-4">
-        <div className={cn(
-          "flex items-center w-full px-3 py-2",
-          isHovered ? "justify-between" : "justify-center"
-        )}>
+        <div 
+          className={cn(
+            "flex items-center w-full px-3 py-2 hover:bg-secondary rounded-md transition-colors duration-200 cursor-pointer",
+            isHovered ? "justify-between" : "justify-center"
+          )}
+          onClick={() => {
+            // Access the ThemeToggle's functionality through a custom method
+            // This assumes ThemeToggle has a click handler that toggles the theme
+            const themeToggleElement = document.querySelector('[data-theme-toggle]');
+            if (themeToggleElement) {
+              (themeToggleElement as HTMLElement).click();
+            }
+          }}
+        >
           <ThemeToggle />
           {isHovered && <span className="text-sm">Toggle theme</span>}
         </div>

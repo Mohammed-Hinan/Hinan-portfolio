@@ -8,7 +8,8 @@ export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <Button
+    <Button 
+      data-theme-toggle
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
