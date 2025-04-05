@@ -367,7 +367,7 @@ export default function DoctorsAppPage() {
             </p>
             <div className="relative w-full h-[600px] border border-[rgba(0,0,0,0.1)] rounded-md overflow-hidden">
               <iframe 
-                src="https://embed.figma.com/design/QDmNBk5Hg7m8ykhFl122Ng/Clinic-Appointment-Booking-App?node-id=198-1936&embed-host=share" 
+                src="https://embed.figma.com/proto/QDmNBk5Hg7m8ykhFl122Ng/Clinic-Appointment-Booking-App?node-id=311-2126&p=f&scaling=scale-down&content-scaling=fixed&page-id=198%3A1936&starting-point-node-id=311%3A2134&embed-host=share" 
                 className="absolute top-0 left-0 w-full h-full"
                 allowFullScreen
               />
