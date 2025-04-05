@@ -42,7 +42,7 @@ export function CaseStudyNav() {
   }, [isLoomyPage]);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border py-2 ml-16">
+    <div className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border py-2 ml-16">
       <div className="max-w-5xl mx-auto flex items-center justify-between py-4">
         <Link
           href="/"

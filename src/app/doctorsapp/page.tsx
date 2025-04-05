@@ -6,20 +6,11 @@ import { CaseStudyNav } from "@/components/case-study-nav"
 
 export default function DoctorsAppPage() {
   return (
-    <main className="pt-16 px-8 pb-24">
+    <main className="pt-24 px-8 pb-24">
       <div className="max-w-5xl mx-auto">
         {/* Hero Section */}
         <div className="mb-24">
-          <div className="mb-8 flex items-center">
-            <Link
-              href="/"
-              className="text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>Back to home</span>
-            </Link>
-          </div>
-
+          {/* Removing the Back to home CTA */}
           <h1 className="text-5xl font-bold mb-8">Doctor's United: Redefining Appointment Booking</h1>
           <p className="text-2xl text-muted-foreground mb-8">
             From long waits to seamless scheduling – discover how we revolutionized a clinic's experience.
@@ -62,7 +53,7 @@ export default function DoctorsAppPage() {
         <CaseStudyNav />
 
         {/* The Challenge Section */}
-        <div id="challenge" className="mb-24 scroll-mt-16">
+        <div id="challenge" className="mb-24 scroll-mt-24">
           <h2 className="text-3xl font-semibold mb-6">The Challenge</h2>
           <div className="border-t border-border my-6"></div>
           
@@ -89,7 +80,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* Research Section */}
-        <div id="research" className="mb-24 scroll-mt-16">
+        <div id="research" className="mb-24 scroll-mt-24">
           <h2 className="text-3xl font-semibold mb-6">Research</h2>
           <div className="border-t border-border my-6"></div>
           

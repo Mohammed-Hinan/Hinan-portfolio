@@ -49,7 +49,7 @@ export function Sidebar() {
   return (
     <div
       className={cn(
-        "h-screen w-16 fixed left-0 top-0 bg-card border-r border-border flex flex-col items-center py-4 z-10 transition-all duration-300",
+        "h-screen w-16 fixed left-0 top-0 bg-card border-r border-border flex flex-col items-center py-4 z-50 transition-all duration-300",
         isHovered && "w-64"
       )}
       onMouseEnter={() => setIsHovered(true)}
