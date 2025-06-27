@@ -29,7 +29,7 @@ export function HomeHeader() {
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 bg-green-500 rounded-full" />
           <p className="text-sm">
-            Currently desperately searching for a job
+            Currently searching for a job
           </p>
         </div>
 

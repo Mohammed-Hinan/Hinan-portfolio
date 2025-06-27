@@ -1,15 +1,147 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { CaseStudyNav } from "@/components/case-study-nav"
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export default function DoctorsAppPage() {
+  // Refs for animations
+  const heroRef = useRef(null);
+  const overviewRef = useRef(null);
+  const introRef = useRef(null);
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // Initialize GSAP animations
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Hero section animation
+    gsap.fromTo(
+      heroRef.current,
+      { opacity: 0, y: 50 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 1,
+        ease: "power3.out"
+      }
+    );
+    
+    // Project overview animation with stagger
+    gsap.fromTo(
+      overviewRef.current?.children || [],
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        delay: 0.3
+      }
+    );
+    
+    // Introduction paragraph animation
+    gsap.fromTo(
+      introRef.current,
+      { opacity: 0 },
+      { 
+        opacity: 1, 
+        duration: 1,
+        delay: 0.5,
+        ease: "power2.out"
+      }
+    );
+    
+    // Animate each section on scroll
+    sectionRefs.current.forEach((section, index) => {
+      if (!section) return;
+      
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+      
+      // Animate children of each section
+      const sectionTitle = section.querySelector('h2');
+      const sectionDivider = section.querySelector('.border-t');
+      const sectionContent = section.querySelector('p');
+      const sectionItems = section.querySelectorAll('.grid > div');
+      
+      if (sectionTitle && sectionDivider && sectionContent) {
+        gsap.fromTo(
+          [sectionTitle, sectionDivider, sectionContent],
+          { opacity: 0, y: 20 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none none"
+            }
+          }
+        );
+      }
+      
+      if (sectionItems.length) {
+        gsap.fromTo(
+          sectionItems,
+          { opacity: 0, y: 20 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionItems[0],
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          }
+        );
+      }
+    });
+    
+    // Clean up ScrollTrigger on component unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+  
+  // Function to add sections to refs array
+  const addToSectionRefs = (el: HTMLDivElement | null) => {
+    if (el && !sectionRefs.current.includes(el)) {
+      sectionRefs.current.push(el);
+    }
+  };
+
   return (
     <main className="pt-24 px-8 pb-24">
       <div className="max-w-5xl mx-auto">
         {/* Hero Section */}
-        <div className="mb-24">
+        <div className="mb-24" ref={heroRef}>
           {/* Removing the Back to home CTA */}
           <h1 className="text-5xl font-bold mb-8">Doctor's United: Redefining Appointment Booking</h1>
           <p className="text-2xl text-muted-foreground mb-8">
@@ -18,7 +150,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* Project Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24" ref={overviewRef}>
           <div>
             <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wider">Timeline</h3>
             <p className="text-lg">May 2023 ~ July 2023</p>
@@ -41,9 +173,8 @@ export default function DoctorsAppPage() {
           </div>
         </div>
        
-
         {/* Introduction */}
-        <div className="mb-24">
+        <div className="mb-24" ref={introRef}>
           <p className="text-xl leading-relaxed mb-8">
             Imagine a world where booking a doctor's appointment isn't a struggle against endless phone calls and frustrating wait times. With Doctor's United, we turned that vision into reality. This case study explores the journey of transforming a traditional booking system into a user-friendly, engaging digital experience.
           </p>
@@ -53,7 +184,7 @@ export default function DoctorsAppPage() {
         <CaseStudyNav />
 
         {/* The Challenge Section */}
-        <div id="challenge" className="mb-24 scroll-mt-24">
+        <div id="challenge" className="mb-24 scroll-mt-24" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">The Challenge</h2>
           <div className="border-t border-border my-6"></div>
           
@@ -80,7 +211,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* Research Section */}
-        <div id="research" className="mb-24 scroll-mt-24">
+        <div id="research" className="mb-24 scroll-mt-24" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">Research</h2>
           <div className="border-t border-border my-6"></div>
           
@@ -145,7 +276,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* Developing Solution Section */}
-        <div id="developing" className="mb-24 scroll-mt-16">
+        <div id="developing" className="mb-24 scroll-mt-16" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">Developing Solution</h2>
           <div className="border-t border-border my-6"></div>
           
@@ -166,7 +297,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* Mid-Fidelity Wireframes Section */}
-        <div id="mid-fidelity" className="mb-24 scroll-mt-16">
+        <div id="mid-fidelity" className="mb-24 scroll-mt-16" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">Mid-Fidelity Wireframes</h2>
           <div className="border-t border-border my-6"></div>
           
@@ -190,7 +321,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* Design System Section */}
-        <div id="design-system" className="mb-24 scroll-mt-16">
+        <div id="design-system" className="mb-24 scroll-mt-16" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">Design System</h2>
           <div className="border-t border-border my-6"></div>
           
@@ -284,7 +415,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* High-Fidelity Wireframes Section */}
-        <div id="high-fidelity" className="mb-24 scroll-mt-16">
+        <div id="high-fidelity" className="mb-24 scroll-mt-16" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">High-Fidelity Wireframes</h2>
           <div className="border-t border-border my-6"></div>
           
@@ -308,7 +439,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* Final Solution Section */}
-        <div id="final-solution" className="mb-24 scroll-mt-16">
+        <div id="final-solution" className="mb-24 scroll-mt-16" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">Final Solution</h2>
           <div className="border-t border-border my-6"></div>
           
@@ -367,7 +498,7 @@ export default function DoctorsAppPage() {
         </div>
 
         {/* Reflection Section */}
-        <div id="reflection" className="mb-24 scroll-mt-16">
+        <div id="reflection" className="mb-24 scroll-mt-16" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">Reflection</h2>
           <div className="border-t border-border my-6"></div>
           

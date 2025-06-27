@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { PlaygroundCard } from "@/components/playground-card"
-import { Brain, Sticker } from "lucide-react"
+import { Brain, Sticker, Sparkles } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 interface PlaygroundItem {
@@ -24,20 +24,19 @@ const playgroundItems: PlaygroundItem[] = [
     gradient: "from-purple-500 to-pink-500"
   },
   {
-    title: "Sticker Generator",
-    description: "Create custom stickers with borders, shadows, and text from your images.",
-    label: "Design Tool",
-    icon: Sticker,
-    href: "/playground/sticker-generator",
-    gradient: "from-green-500 to-teal-500",
-    comingSoon: true  // Added this property to make it "Coming Soon"
+    title: "Kaleidoscope",
+    description: "Create mesmerizing symmetrical patterns with this interactive kaleidoscope generator.",
+    label: "Visual Experience",
+    icon: Sparkles,
+    href: "/playground/kaleidoscope",
+    gradient: "from-blue-500 to-indigo-500"
   }
 ]
 
 export default function PlaygroundPage() {
   return (
-    <main className="pt-8 px-8 pb-12 ml-16">
-      <div className="max-w-5xl mx-auto">
+    <main className="pt-8 px-8 pb-12 ml-16 min-h-screen flex flex-col">
+      <div className="max-w-5xl mx-auto flex-grow">
         <div className="mb-12">
           <h1 className="text-4xl font-bold mb-4">Playground</h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
@@ -59,15 +58,6 @@ export default function PlaygroundPage() {
               comingSoon={item.comingSoon}
             />
           ))}
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/"
-            className="text-primary hover:underline flex items-center gap-1"
-          >
-            ← Back to main portfolio
-          </Link>
         </div>
       </div>
 

@@ -7,20 +7,20 @@ import AvatarBuilder from "@/components/AvatarBuilder"
 
 export default function LoomyPage() {
   return (
-    <main className="pt-16 px-8 pb-24">
+    <main className="pt-16 px-4 sm:px-6 md:px-8 pb-16 sm:pb-24">
       {/* Add the CaseStudyNav component at the top */}
       <CaseStudyNav />
       
       {/* Using margin-top instead of padding-top for better spacing */}
-      <div className="max-w-5xl mx-auto mt-16">
+      <div className="max-w-5xl mx-auto mt-12 sm:mt-16">
         {/* Hero Section */}
-        <div className="mb-24">
-          <h1 className="text-5xl font-bold mb-8">LooMY: Anonymous Chat App</h1>
-          <p className="text-2xl text-muted-foreground mb-8">
+        <div className="mb-16 sm:mb-24">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-8">LooMY: Anonymous Chat App</h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8">
             Designing a secure, anonymous platform for authentic conversations without compromising privacy
           </p>
           
-          <div className="relative w-full mb-12">
+          <div className="relative w-full mb-8 sm:mb-12">
             <Image
               src="/images/loomy-avatars-banner.jpg"
               alt="Loomy: An Anonymous Chat App Featuring Loom, Your Cartoon Avatar, For Vibrant And Secure Conversations"
@@ -33,32 +33,32 @@ export default function LoomyPage() {
 
         {/* Rest of the content remains unchanged */}
         {/* Project Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-24">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 mb-16 sm:mb-24">
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wider">Timeline</h3>
-            <p className="text-lg">May 2023 ~ July 2023</p>
+            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Timeline</h3>
+            <p className="text-base sm:text-lg">May 2023 ~ July 2023</p>
           </div>
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wider">Disciplines</h3>
-            <p className="text-lg">User Experience Design<br /> User Interface Design</p>
+            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Disciplines</h3>
+            <p className="text-base sm:text-lg">User Experience Design<br /> User Interface Design</p>
           </div>
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wider">Responsibilities</h3>
-            <p className="text-lg">UX Research<br />Wireframing<br />Designing<br />Prototyping</p>
+            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Responsibilities</h3>
+            <p className="text-base sm:text-lg">UX Research<br />Wireframing<br />Designing<br />Prototyping</p>
           </div>
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wider">Tools</h3>
-            <p className="text-lg">Figma<br />Adobe Illustrator<br />Protopie<br />React Native</p>
+            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Tools</h3>
+            <p className="text-base sm:text-lg">Figma<br />Adobe Illustrator<br />Protopie<br />React Native</p>
           </div>
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wider">Team</h3>
-            <p className="text-lg">Mohammed Hinan A K<br />Ashal P S</p>
+            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Team</h3>
+            <p className="text-base sm:text-lg">Mohammed Hinan A K<br />Ashal P S</p>
           </div>
         </div>
 
         {/* Introduction */}
-        <div className="mb-24">
-          <p className="text-xl leading-relaxed mb-8">
+        <div className="mb-16 sm:mb-24">
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8">
             In a digital world where privacy is increasingly scarce, LooMY offers a refreshing alternative. 
             This case study explores how we created an anonymous chat platform that fosters authentic connections 
             while prioritizing user privacy and safety.
@@ -68,16 +68,16 @@ export default function LoomyPage() {
         {/* Remove the duplicate CaseStudyNav that was here */}
         
         {/* The Challenge Section */}
-        <div id="challenge" className="mb-24 scroll-mt-24">
-          <h2 className="text-3xl font-semibold mb-6">The Challenge</h2>
-          <div className="border-t border-border my-6"></div>
+        <div id="challenge" className="mb-16 sm:mb-24 scroll-mt-24">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6">The Challenge</h2>
+          <div className="border-t border-border my-4 sm:my-6"></div>
           
-          <p className="text-xl leading-relaxed mb-12">
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-12">
             Most social platforms today require extensive personal information, creating privacy concerns and limiting authentic expression.
             We needed to create a platform that allows anonymous communication while still fostering meaningful connections and preventing misuse.
           </p>
           
-          <div className="relative w-full mb-12">
+          <div className="relative w-full mb-8 sm:mb-12">
             <Image
               src="/images/loomy-challenges.jpg"
               alt="LooMY app challenges: Privacy Concerns, Authenticity Barriers, and Safety Issues"
@@ -87,20 +87,20 @@ export default function LoomyPage() {
             />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-green-900/10 rounded-lg p-8 border border-green-900/20">
-              <h3 className="font-medium mb-4 text-xl">Privacy Concerns</h3>
-              <p className="text-lg">Users are increasingly worried about data collection and privacy breaches on social platforms.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
+            <div className="bg-green-900/10 rounded-lg p-4 sm:p-8 border border-green-900/20">
+              <h3 className="font-medium mb-2 sm:mb-4 text-lg sm:text-xl">Privacy Concerns</h3>
+              <p className="text-base sm:text-lg">Users are increasingly worried about data collection and privacy breaches on social platforms.</p>
             </div>
             
-            <div className="bg-green-900/10 rounded-lg p-8 border border-green-900/20">
-              <h3 className="font-medium mb-4 text-xl">Authenticity Barriers</h3>
-              <p className="text-lg">Public profiles often lead to curated personas rather than genuine expression.</p>
+            <div className="bg-green-900/10 rounded-lg p-4 sm:p-8 border border-green-900/20">
+              <h3 className="font-medium mb-2 sm:mb-4 text-lg sm:text-xl">Authenticity Barriers</h3>
+              <p className="text-base sm:text-lg">Public profiles often lead to curated personas rather than genuine expression.</p>
             </div>
             
-            <div className="bg-green-900/10 rounded-lg p-8 border border-green-900/20">
-              <h3 className="font-medium mb-4 text-xl">Safety Issues</h3>
-              <p className="text-lg">Anonymous platforms often struggle with harassment, spam, and inappropriate content.</p>
+            <div className="bg-green-900/10 rounded-lg p-4 sm:p-8 border border-green-900/20">
+              <h3 className="font-medium mb-2 sm:mb-4 text-lg sm:text-xl">Safety Issues</h3>
+              <p className="text-base sm:text-lg">Anonymous platforms often struggle with harassment, spam, and inappropriate content.</p>
             </div>
           </div>
         </div>

@@ -5,16 +5,18 @@ export default function PosterDesignPage() {
     <main className="pt-8 px-8 pb-12 ml-16">
       <section className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">Poster Design</h1>
-          <p className="text-lg text-muted-foreground">
+          <h1 className="text-4xl font-bold mb-6">Poster Design</h1>
+          <p className="text-lg text-muted-foreground mb-8">
             Eye-catching poster designs for events, promotions, and campaigns that demand attention.
           </p>
         </div>
+        
+        <hr className="border-border mb-12" />
 
         {/* Pachaak Poster Series */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-semibold mb-6">Pachaak Cultural Experience</h2>
-          <p className="text-muted-foreground mb-8">
+        <div className="mb-20">
+          <h2 className="text-2xl font-semibold mb-4">Pachaak Cultural Experience</h2>
+          <p className="text-muted-foreground mb-10">
             A series of promotional posters for Pachaak, an immersive cultural experience celebrating Indian culinary traditions and storytelling.
           </p>
           
