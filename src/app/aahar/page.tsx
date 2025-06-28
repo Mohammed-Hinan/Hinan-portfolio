@@ -25,26 +25,24 @@ export default function AnnamPage() {
         </div>
 
         {/* Project Overview */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 mb-16 sm:mb-24">
-          <div>
-            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Timeline</h3>
-            <p className="text-base sm:text-lg">Jan 2024 ~ Mar 2024</p>
-          </div>
-          <div>
-            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Disciplines</h3>
-            <p className="text-base sm:text-lg">UX Design<br />UI Design<br />Service Design</p>
-          </div>
-          <div>
-            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Responsibilities</h3>
-            <p className="text-base sm:text-lg">Research<br />Wireframing<br />Prototyping<br />UI Design<br />User Testing</p>
-          </div>
-          <div>
-            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Tools</h3>
-            <p className="text-base sm:text-lg">Figma<br />Miro<br />Adobe Illustrator</p>
-          </div>
-          <div>
-            <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">Team</h3>
-            <p className="text-base sm:text-lg">Aarav Sharma<br />Priya Menon<br />Riya Patel</p>
+        <div className="flex justify-center items-center w-full mb-16 sm:mb-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div>
+              <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">TIMELINE</h3>
+              <p className="text-2xl font-semibold text-white">Apr 2025 ~ Jun 2025</p>
+            </div>
+            <div>
+              <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">DISCIPLINES</h3>
+              <p className="text-2xl font-semibold text-white">UX Design<br />UI Design<br />Service Design</p>
+            </div>
+            <div>
+              <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">RESPONSIBILITIES</h3>
+              <p className="text-2xl font-semibold text-white">Research<br />Wireframing<br />Prototyping<br />UI Design<br />User Testing</p>
+            </div>
+            <div>
+              <h3 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider">TOOLS</h3>
+              <p className="text-2xl font-semibold text-white">Figma<br />Miro<br />Adobe Illustrator</p>
+            </div>
           </div>
         </div>
 
