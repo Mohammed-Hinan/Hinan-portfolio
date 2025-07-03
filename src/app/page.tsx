@@ -99,7 +99,7 @@ export default function Home() {
   };
 
   return (
-    <main className="pt-6 px-8 pb-12 ml-16">
+    <main className="pt-6 px-4 md:px-8 pb-12">
       {/* Parallax Background */}
       <ParallaxBackground />
       

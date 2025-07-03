@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CaseStudyNav } from "@/components/case-study-nav";
 import QuantitativePieCharts from "@/components/QuantitativePieCharts";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export default function AnnamPage() {
   return (

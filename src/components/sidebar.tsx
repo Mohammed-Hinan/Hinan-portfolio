@@ -1,10 +1,11 @@
-"use client"
-
-import { useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
-import { ThemeToggle } from "@/components/theme-toggle"
+"use client";
+import { cn } from "@/lib/utils";
+import React, { useState, createContext, useContext } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { IconMenu2, IconX } from "@tabler/icons-react";
+import Link from "next/link";
+import Image from "next/image";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 // Icons
 import {
@@ -13,8 +14,9 @@ import {
   User,
   BookOpen,
   Linkedin,
-  Mail
-} from "lucide-react"
+  Mail,
+  Layers
+} from "lucide-react";
 
 // Custom icons for Dribbble and Behance
 const DribbbleIcon = () => (
@@ -28,7 +30,7 @@ const DribbbleIcon = () => (
       </clipPath>
     </defs>
   </svg>
-)
+);
 
 const BehanceIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" strokeWidth="2" className="h-5 w-5">
@@ -41,112 +43,327 @@ const BehanceIcon = () => (
       </clipPath>
     </defs>
   </svg>
-)
+);
 
-export function Sidebar() {
-  const [isHovered, setIsHovered] = useState(false)
+interface Links {
+  label: string;
+  href: string;
+  icon: React.JSX.Element | React.ReactNode;
+  external?: boolean;
+}
+
+interface SidebarContextProps {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  animate: boolean;
+}
+
+const SidebarContext = createContext<SidebarContextProps | undefined>(
+  undefined
+);
+
+export const useSidebar = () => {
+  const context = useContext(SidebarContext);
+  if (!context) {
+    throw new Error("useSidebar must be used within a SidebarProvider");
+  }
+  return context;
+};
+
+export const SidebarProvider = ({
+  children,
+  open: openProp,
+  setOpen: setOpenProp,
+  animate = true,
+}: {
+  children: React.ReactNode;
+  open?: boolean;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  animate?: boolean;
+}) => {
+  const [openState, setOpenState] = useState(false);
+
+  const open = openProp !== undefined ? openProp : openState;
+  const setOpen = setOpenProp !== undefined ? setOpenProp : setOpenState;
 
   return (
-    <div
-      className={cn(
-        "h-screen w-16 fixed left-0 top-0 bg-card border-r border-border flex flex-col items-center py-4 z-50 transition-all duration-300",
-        isHovered && "w-64"
-      )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <Link href="/" className="mb-8">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary">
-          <Image
-            src="/images/profile-photo.jpg"
-            alt="Mohammed Hinan A K"
-            fill
-            className="object-cover"
+    <SidebarContext.Provider value={{ open, setOpen, animate: animate }}>
+      {children}
+    </SidebarContext.Provider>
+  );
+};
+
+export const SidebarWrapper = ({
+  children,
+  open,
+  setOpen,
+  animate,
+}: {
+  children: React.ReactNode;
+  open?: boolean;
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  animate?: boolean;
+}) => {
+  return (
+    <SidebarProvider open={open} setOpen={setOpen} animate={animate}>
+      {children}
+    </SidebarProvider>
+  );
+};
+
+export const SidebarBody = (props: React.ComponentProps<typeof motion.div>) => {
+  return (
+    <>
+      <DesktopSidebar {...props} />
+      <MobileSidebar {...(props as React.ComponentProps<"div">)} />
+    </>
+  );
+};
+
+export const DesktopSidebar = ({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof motion.div>) => {
+  const { open, setOpen, animate } = useSidebar();
+  return (
+    <>
+      <motion.div
+        className={cn(
+          "h-full px-4 py-4 hidden md:flex md:flex-col bg-card border-r border-border w-[300px] shrink-0 fixed left-0 top-0 z-50",
+          className
+        )}
+        animate={{
+          width: animate ? (open ? "300px" : "60px") : "300px",
+        }}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        {...props}
+      >
+        {children}
+      </motion.div>
+    </>
+  );
+};
+
+export const MobileSidebar = ({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"div">) => {
+  const { open, setOpen } = useSidebar();
+  return (
+    <>
+      <div
+        className={cn(
+          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-card border-b border-border w-full"
+        )}
+        {...props}
+      >
+        <div className="flex justify-end z-20 w-full">
+          <IconMenu2
+            className="text-foreground"
+            onClick={() => setOpen(!open)}
           />
         </div>
-      </Link>
-
-      <nav className="flex flex-col items-center gap-4">
-        <NavItem href="/" icon={<Home className="h-5 w-5" />} label="Home" isHovered={isHovered} />
-        <NavItem href="/playground" icon={<GamepadIcon className="h-5 w-5" />} label="Playground" isHovered={isHovered} />
-        <NavItem href="/about-me" icon={<User className="h-5 w-5" />} label="About Me" isHovered={isHovered} />
-        <NavItem href="https://drive.google.com/file/d/14aii4GIyyTVmF07Eunf7PLCL-jwOw6lN/view?usp=sharing" icon={<BookOpen className="h-5 w-5" />} label="Read CV" isHovered={isHovered} external />
-      </nav>
-
-      <div className="mt-auto flex flex-col items-center gap-4 mb-4">
-        <div 
-          className={cn(
-            "flex items-center w-full px-3 py-2 hover:bg-secondary rounded-md transition-colors duration-200 cursor-pointer",
-            isHovered ? "justify-between" : "justify-center"
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ x: "-100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "-100%", opacity: 0 }}
+              transition={{
+                duration: 0.3,
+                ease: "easeInOut",
+              }}
+              className={cn(
+                "fixed h-full w-full inset-0 bg-background p-10 z-[100] flex flex-col justify-between",
+                className
+              )}
+            >
+              <div
+                className="absolute right-10 top-10 z-50 text-foreground"
+                onClick={() => setOpen(!open)}
+              >
+                <IconX />
+              </div>
+              {children}
+            </motion.div>
           )}
-          onClick={() => {
-            const themeToggleElement = document.querySelector('[data-theme-toggle]');
-            if (themeToggleElement) {
-              (themeToggleElement as HTMLElement).click();
-            }
-          }}
-        >
-          <span className="flex items-center justify-center w-5 h-5">
-            <ThemeToggle />
-          </span>
-          {isHovered && <span className="text-sm">Toggle theme</span>}
-        </div>
-
-        <NavItem
-          href="https://www.linkedin.com/in/mohammed-hinan-a-k-b54967223"
-          icon={<Linkedin className="h-5 w-5" />}
-          label="LinkedIn"
-          isHovered={isHovered}
-          external
-        />
-        <NavItem
-          href="https://www.behance.net/hinanak"
-          icon={<BehanceIcon />}
-          label="Behance"
-          isHovered={isHovered}
-          external
-        />
-        <NavItem
-          href="https://dribbble.com/Mohammed_Hinan_AK"
-          icon={<DribbbleIcon />}
-          label="Dribbble"
-          isHovered={isHovered}
-          external
-        />
-        <NavItem
-          href="mailto:mohammedhinanak@gmail.com"
-          icon={<Mail className="h-5 w-5" />}
-          label="Email"
-          isHovered={isHovered}
-          external
-        />
+        </AnimatePresence>
       </div>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-interface NavItemProps {
-  href: string
-  icon: React.ReactNode
-  label: string
-  isHovered: boolean
-  external?: boolean
-}
-
-function NavItem({ href, icon, label, isHovered, external = false }: NavItemProps) {
+export const SidebarLink = ({
+  link,
+  className,
+  ...props
+}: {
+  link: Links;
+  className?: string;
+}) => {
+  const { open, animate } = useSidebar();
   return (
     <Link
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer noopener" : undefined}
-      className="group relative flex items-center w-full px-3 py-2 hover:bg-secondary rounded-md transition-colors duration-200"
-    >
-      <span className="flex items-center justify-center w-5 h-5">{icon}</span>
-      {isHovered && (
-        <span className="ml-3 text-sm whitespace-nowrap opacity-100 transition-opacity duration-200">
-          {label}
-        </span>
+      href={link.href}
+      target={link.external ? "_blank" : undefined}
+      rel={link.external ? "noreferrer noopener" : undefined}
+      className={cn(
+        "flex items-center group/sidebar py-2 rounded-md transition-colors duration-200 hover:bg-secondary",
+        open ? "justify-start px-3 gap-2" : "justify-center px-0 gap-0",
+        className
       )}
+      {...props}
+    >
+      {link.icon}
+
+      <motion.span
+        animate={{
+          display: animate ? (open ? "inline-block" : "none") : "inline-block",
+          opacity: animate ? (open ? 1 : 0) : 1,
+        }}
+        className="text-foreground text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+      >
+        {link.label}
+      </motion.span>
     </Link>
-  )
+  );
+};
+
+// Main Sidebar Component with Navigation
+export function SidebarWithContent() {
+  const links: Links[] = [
+    {
+      label: "Home",
+      href: "/",
+      icon: <Home className="h-5 w-5" />,
+    },
+    {
+      label: "Case Studies",
+      href: "/#casestudies",
+      icon: <Layers className="h-5 w-5" />,
+    },
+    {
+      label: "Playground",
+      href: "/playground",
+      icon: <GamepadIcon className="h-5 w-5" />,
+    },
+    {
+      label: "About Me",
+      href: "/about-me",
+      icon: <User className="h-5 w-5" />,
+    },
+    {
+      label: "Read CV",
+      href: "https://drive.google.com/file/d/14aii4GIyyTVmF07Eunf7PLCL-jwOw6lN/view?usp=sharing",
+      icon: <BookOpen className="h-5 w-5" />,
+      external: true,
+    },
+  ];
+
+  const socialLinks: Links[] = [
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/mohammed-hinan-a-k-b54967223",
+      icon: <Linkedin className="h-5 w-5" />,
+      external: true,
+    },
+    {
+      label: "Behance",
+      href: "https://www.behance.net/hinanak",
+      icon: <BehanceIcon />,
+      external: true,
+    },
+    {
+      label: "Dribbble",
+      href: "https://dribbble.com/Mohammed_Hinan_AK",
+      icon: <DribbbleIcon />,
+      external: true,
+    },
+    {
+      label: "Email",
+      href: "mailto:mohammedhinanak@gmail.com",
+      icon: <Mail className="h-5 w-5" />,
+      external: true,
+    },
+  ];
+
+  const { open } = useSidebar();
+
+  return (
+    <>
+      <SidebarBody>
+        <div className="flex flex-col h-full">
+          {/* Profile Section */}
+          <div className="flex flex-col items-center mb-8">
+            <Link href="/" className="mb-4">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary">
+                <Image
+                  src="/images/profile-photo.jpg"
+                  alt="Mohammed Hinan A K"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </Link>
+            <motion.div
+              animate={{
+                opacity: open ? 1 : 0,
+                display: open ? "block" : "none",
+              }}
+              className="text-center"
+            >
+              <h3 className="text-sm font-medium">Mohammed Hinan A K</h3>
+              <p className="text-xs text-muted-foreground">Designer</p>
+            </motion.div>
+          </div>
+
+          {/* Navigation Links */}
+          <nav className="flex flex-col gap-2 mb-8">
+            {links.map((link, idx) => (
+              <SidebarLink key={idx} link={link} />
+            ))}
+          </nav>
+
+          {/* Theme Toggle */}
+          <div className="mb-4">
+            <div
+              className={cn(
+                "flex items-center transition-colors duration-200 cursor-pointer hover:bg-secondary rounded-md py-2",
+                open ? "justify-start px-3 gap-2" : "justify-center px-0 gap-0"
+              )}
+              onClick={() => {
+                const themeToggleElement = document.querySelector('[data-theme-toggle]');
+                if (themeToggleElement) {
+                  (themeToggleElement as HTMLElement).click();
+                }
+              }}
+            >
+              <span className="flex items-center justify-center w-5 h-5">
+                <ThemeToggle />
+              </span>
+              <motion.span
+                animate={{
+                  opacity: open ? 1 : 0,
+                  display: open ? "inline-block" : "none",
+                }}
+                className="text-sm"
+              >
+                Toggle theme
+              </motion.span>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="mt-auto flex flex-col gap-2">
+            {socialLinks.map((link, idx) => (
+              <SidebarLink key={idx} link={link} />
+            ))}
+          </div>
+        </div>
+      </SidebarBody>
+    </>
+  );
 }
