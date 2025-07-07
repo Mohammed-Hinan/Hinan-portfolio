@@ -4,10 +4,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Footer } from "@/components/footer"
-import { CaseStudyNav } from "@/components/case-study-nav"
+import { FloatingNav } from "@/components/FloatingNav"
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import FlowingMenu from "@/components/FlowingMenu"
+import { BarChart, Bar, CartesianGrid, LabelList, XAxis, Tooltip, ResponsiveContainer, YAxis } from 'recharts';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 
 export default function DoctorsAppPage() {
   // Refs for animations
@@ -137,8 +140,38 @@ export default function DoctorsAppPage() {
     }
   };
 
+  // Clinic Features data
+  const clinicFeatures = [
+    { feature: "Real‑time availability tracking", value: 85 },
+    { feature: "Filtering by doctor, time, day, and department", value: 90 },
+    { feature: "In‑app payment options", value: 75 },
+    { feature: "Appointment reminders and notifications", value: 95 },
+    { feature: "Doctor ratings and reviews", value: 55 },
+    { feature: "Favorite doctors list", value: 35 },
+    { feature: "Know the current token in consultation", value: 5 },
+  ];
+  // Booking Challenges data
+  const bookingChallenges = [
+    { challenge: "Long wait times", value: 95 },
+    { challenge: "Difficulty reaching the clinic", value: 60 },
+    { challenge: "Lack of appointment slots", value: 80 },
+    { challenge: "Other", value: 5 },
+  ];
+
   return (
     <main className="pt-24 px-8 pb-24">
+      <FloatingNav
+        navItems={[
+          { name: "The Challenge", link: "#challenge" },
+          { name: "Research", link: "#research" },
+          { name: "Developing", link: "#developing" },
+          { name: "Mid-Fidelity", link: "#mid-fidelity" },
+          { name: "Design", link: "#design-system" },
+          { name: "High-Fi", link: "#high-fidelity" },
+          { name: "Final", link: "#final-solution" },
+          { name: "Reflection", link: "#reflection" },
+        ]}
+      />
       <div className="max-w-5xl mx-auto">
         {/* Hero Section */}
         <div className="mb-24" ref={heroRef}>
@@ -180,9 +213,6 @@ export default function DoctorsAppPage() {
           </p>
         </div>
 
-        {/* Case Study Navigation */}
-        <CaseStudyNav />
-
         {/* The Challenge Section */}
         <div id="challenge" className="mb-24 scroll-mt-24" ref={(el) => addToSectionRefs(el)}>
           <h2 className="text-3xl font-semibold mb-6">The Challenge</h2>
@@ -220,41 +250,101 @@ export default function DoctorsAppPage() {
           </p>
           
           <div className="space-y-12 mb-12">
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <h4 className="text-xl font-medium mb-6 text-black">Booking Challenges</h4>
-              <div className="relative h-64 w-full">
-                <Image
-                  src="/images/survey-challenges.png"
-                  alt="Survey chart showing challenges when booking appointments"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>Most Important Features</CardTitle>
+                <CardDescription>What users value most in a clinic app</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div style={{ width: "100%", height: 400 }}>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={clinicFeatures}
+                      layout="vertical"
+                      margin={{ right: 16 }}
+                    >
+                      <CartesianGrid horizontal={false} />
+                      <YAxis
+                        dataKey="feature"
+                        type="category"
+                        tickLine={false}
+                        tickMargin={10}
+                        axisLine={false}
+                        hide
+                      />
+                      <XAxis dataKey="value" type="number" hide />
+                      <Bar dataKey="value" fill="#3b82f6" radius={4}>
+                        <LabelList
+                          dataKey="feature"
+                          position="insideLeft"
+                          offset={8}
+                          style={{ fill: "#fff", fontSize: 14, fontWeight: 500 }}
+                        />
+                        <LabelList
+                          dataKey="value"
+                          position="right"
+                          offset={8}
+                          style={{ fill: "#222", fontSize: 14, fontWeight: 600 }}
+                        />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+              <CardFooter className="flex-col items-start gap-2 text-sm">
+                <div className="text-muted-foreground leading-none">
+                  Survey of 100+ users, 2024
+                </div>
+              </CardFooter>
+            </Card>
             
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <h4 className="text-xl font-medium mb-6 text-black">Important Features</h4>
-              <div className="relative h-64 w-full">
-                <Image
-                  src="/images/survey-features.png"
-                  alt="Survey chart showing important features for booking app"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm aspect-square">
-              <h4 className="text-xl font-medium mb-4 text-black">User Demographics and Preferences</h4>
-              <div className="relative w-full h-[calc(100%-3rem)]">
-                <Image
-                  src="/images/survey-demographics.png"
-                  alt="Survey chart showing user demographics and preferences"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>Top Booking Challenges</CardTitle>
+                <CardDescription>What users struggle with most</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div style={{ width: "100%", height: 400 }}>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={bookingChallenges}
+                      layout="vertical"
+                      margin={{ right: 16 }}
+                    >
+                      <CartesianGrid horizontal={false} />
+                      <YAxis
+                        dataKey="challenge"
+                        type="category"
+                        tickLine={false}
+                        tickMargin={10}
+                        axisLine={false}
+                        hide
+                      />
+                      <XAxis dataKey="value" type="number" hide />
+                      <Bar dataKey="value" fill="#22c55e" radius={4}>
+                        <LabelList
+                          dataKey="challenge"
+                          position="insideLeft"
+                          offset={8}
+                          style={{ fill: "#fff", fontSize: 14, fontWeight: 500 }}
+                        />
+                        <LabelList
+                          dataKey="value"
+                          position="right"
+                          offset={8}
+                          style={{ fill: "#222", fontSize: 14, fontWeight: 600 }}
+                        />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+              <CardFooter className="flex-col items-start gap-2 text-sm">
+                <div className="text-muted-foreground leading-none">
+                  Survey of 100+ users, 2024
+                </div>
+              </CardFooter>
+            </Card>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -281,7 +371,7 @@ export default function DoctorsAppPage() {
           <div className="border-t border-border my-6"></div>
           
           <p className="text-xl leading-relaxed mb-12">
-            Based on our research insights, we created a moodboard to visualize the contrast between traditional booking methods and our digital solution. This helped us align our design direction with user needs and expectations.
+            Based on our research insights, we created a storyboard to visualize the contrast between traditional booking methods and our digital solution. This helped us align our design direction with user needs and expectations.
           </p>
           
           <div className="bg-card p-8 rounded-lg border border-border mb-12">
@@ -513,12 +603,11 @@ export default function DoctorsAppPage() {
           </div>
         </div>
 
-        {/* Next Case Study */}
-        <div className="mt-24 border-t border-border pt-12">
-          <h3 className="text-lg uppercase text-muted-foreground mb-4">Next Case Study</h3>
-          <Link href="/loomy" className="text-2xl font-semibold hover:text-primary transition-colors">
-            LooMY: Anonymous Chatting App
-          </Link>
+        <div style={{ height: '400px', position: 'relative', marginTop: '4rem' }}>
+          <FlowingMenu items={[
+            { link: '/loomy', text: 'LooMY', image: '/images/loomy-app.jpg' },
+            { link: '/aahar', text: 'Annam', image: '/images/food-rescue-hero.jpg' },
+          ]} />
         </div>
       </div>
 

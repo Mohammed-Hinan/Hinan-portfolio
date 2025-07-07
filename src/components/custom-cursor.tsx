@@ -2,6 +2,20 @@
 
 import { useEffect, useRef, useState } from 'react'
 
+// Listen for custom events to hide/show the cursor
+function useFollowerPointerCardCursorToggle(setIsVisible: (v: boolean) => void) {
+  useEffect(() => {
+    const handleEnter = () => setIsVisible(false);
+    const handleLeave = () => setIsVisible(true);
+    window.addEventListener('follower-pointer-card-enter', handleEnter);
+    window.addEventListener('follower-pointer-card-leave', handleLeave);
+    return () => {
+      window.removeEventListener('follower-pointer-card-enter', handleEnter);
+      window.removeEventListener('follower-pointer-card-leave', handleLeave);
+    };
+  }, [setIsVisible]);
+}
+
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null)
   const cursorRingRef = useRef<HTMLDivElement>(null)
@@ -21,13 +35,13 @@ export function CustomCursor() {
         
         // Check if cursor is over a clickable element
         const target = e.target as HTMLElement
-        const isClickable = 
+        const isClickable = Boolean(
           target.tagName.toLowerCase() === 'a' || 
           target.tagName.toLowerCase() === 'button' ||
           target.closest('a') || 
           target.closest('button') ||
           window.getComputedStyle(target).cursor === 'pointer'
-        
+        )
         setIsPointer(isClickable)
       }
     }
@@ -55,6 +69,8 @@ export function CustomCursor() {
       document.removeEventListener('mouseenter', handleMouseEnter)
     }
   }, [])
+
+  useFollowerPointerCardCursorToggle(setIsVisible);
 
   // Don't render cursor on touch devices
   if (typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0) {

@@ -2,15 +2,25 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Footer } from "@/components/footer"
-import { CaseStudyNav } from "@/components/case-study-nav"
 import AvatarBuilder from "@/components/AvatarBuilder"
+import { FloatingNav } from "@/components/FloatingNav"
+import FlowingMenu from "@/components/FlowingMenu"
 
 export default function LoomyPage() {
   return (
     <main className="pt-16 px-4 sm:px-6 md:px-8 pb-16 sm:pb-24">
-      {/* Add the CaseStudyNav component at the top */}
-      <CaseStudyNav />
-      
+      <FloatingNav
+        navItems={[
+          { name: "The Challenge", link: "#challenge" },
+          { name: "Research", link: "#research" },
+          { name: "Developing", link: "#developing" },
+          { name: "Wireframes", link: "#wireframes" },
+          { name: "Design", link: "#design-system" },
+          { name: "High-Fi", link: "#high-fidelity" },
+          { name: "Avatar", link: "#avatar-story" },
+          { name: "Reflection", link: "#reflection" },
+        ]}
+      />
       {/* Using margin-top instead of padding-top for better spacing */}
       <div className="max-w-5xl mx-auto mt-12 sm:mt-16">
         {/* Hero Section */}
@@ -65,8 +75,6 @@ export default function LoomyPage() {
           </p>
         </div>
 
-        {/* Remove the duplicate CaseStudyNav that was here */}
-        
         {/* The Challenge Section */}
         <div id="challenge" className="mb-16 sm:mb-24 scroll-mt-24">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6">The Challenge</h2>
@@ -396,19 +404,6 @@ export default function LoomyPage() {
               </div>
             </div>
           </div>
-          
-          <div className="bg-card p-8 rounded-lg border border-border">
-            <h3 className="text-xl font-medium mb-6">Wireframes</h3>
-            <div className="relative w-full h-[600px] mb-4">
-              <Image
-                src="/images/loomy-wireframes.jpg"
-                alt="LooMY app wireframes showing the complete user interface flow"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <p className="text-center text-muted-foreground">Complete wireframe flow showing onboarding, profile creation, discovery, and chat interfaces</p>
-          </div>
         </div>
 
         {/* Wireframes Section */}
@@ -673,7 +668,7 @@ export default function LoomyPage() {
                     className="rounded-full"
                   />
                 </div>
-                <p className="text-center text-sm text-muted-foreground">Final Design</p>
+                <p className="text-center text-sm text-muted-foreground">Iteration 5</p>
                 <p className="text-center text-xs text-muted-foreground mt-1">Complete system</p>
               </div>
             </div>
@@ -809,12 +804,11 @@ export default function LoomyPage() {
           </div>
         </div>
 
-        {/* Previous Case Study */}
-        <div className="mt-24 border-t border-border pt-12">
-          <h3 className="text-lg uppercase text-muted-foreground mb-4">Previous Case Study</h3>
-          <Link href="/doctorsapp" className="text-2xl font-semibold hover:text-primary transition-colors">
-            Doctor's Appointment Booking App
-          </Link>
+        <div style={{ height: '400px', position: 'relative', marginTop: '4rem' }}>
+          <FlowingMenu items={[
+            { link: '/doctorsapp', text: "Doctor's App", image: '/images/doctors-booking-app.jpg' },
+            { link: '/aahar', text: 'Annam', image: '/images/food-rescue-hero.jpg' },
+          ]} />
         </div>
         
         <Footer />
@@ -822,5 +816,3 @@ export default function LoomyPage() {
     </main>
   )
 }
-
-// Remove the duplicate navigation section that was here
